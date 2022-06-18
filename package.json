@@ -1,7 +1,9 @@
 {
-  "name": "db-user",
+  "name": "prisma-mongodb-user",
+  "author": "robson raphael",
   "license": "MIT",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
     "@types/node": "^18.0.0",
     "prisma": "^3.15.2",
@@ -13,7 +15,10 @@
   },
   "dependencies": {
     "@prisma/client": "^3.15.2",
-    "express": "^4.18.1"
+    "bcrypt": "^5.0.1",
+    "email-validator": "^2.0.4",
+    "express": "^4.18.1",
+    "password-validator": "^5.3.0"
   },
   "engines": {
     "node": ">=12.2.0"

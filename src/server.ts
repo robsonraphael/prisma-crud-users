@@ -1,17 +1,24 @@
 import express from "express";
+import https from "https";
+import fs from 'fs';
 import { router } from "./routes/routes";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
+
+const options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+}
+const server = https.createServer(options, app);
 
 app.use(express.json());
 app.use(router);
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log("🚀 Server is running...");
 });
 
 process.on("SIGINT", () => {
-  app.disable;
   console.log("🤖 Server closed");
 });
