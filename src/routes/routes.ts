@@ -1,14 +1,27 @@
-import { Router } from "express";
-import { CreateUserController } from "../controller/CreateUserController";
+import { Router, Request, Response } from "express";
+
+// services
+import { CreateUser } from "../services/CreateUser";
+import { GetAllUsers } from "../services/GetAllUsers";
+import { GetUser } from "../services/GetUser";
+import { UpdatePassword } from "../services/UpdatePassword";
+import { DeleteUser } from "../services/DeleteUser";
 
 const router = Router();
 
-const createUser = new CreateUserController();
+// Create User
+router.post("/register", CreateUser);
 
-router.get("/", (req, res) => {
-  res.end("<h1>Home Page</h1>");
-});
-router.post("/user", createUser.handle);
+// Find all
+router.get("/search/user/all", GetAllUsers);
 
+// Find by id
+router.get("/search/user/:id", GetUser);
+
+// Update Password
+router.put("/user/update/password/:id", UpdatePassword);
+
+// Delete User
+router.delete("/user/delete/:id", DeleteUser);
 
 export { router };
